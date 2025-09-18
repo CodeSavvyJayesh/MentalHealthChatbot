@@ -1,0 +1,276 @@
+/* --- Global Styling --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Auth Wrapper Styling --- */
+.auth-wrapper {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+/* Left Panel */
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #3f87a6, #ebf8e1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-left::before {
+  content: "";
+  position: absolute;
+  right: -50px;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: white;
+  border-top-left-radius: 50% 100%;
+  border-bottom-left-radius: 50% 100%;
+}
+
+.auth-left img {
+  width: 250px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Right Panel */
+.auth-right {
+  flex: 1;
+  background: white;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.auth-right h2 {
+  margin-bottom: 20px;
+  color: #0077b6;
+}
+
+.auth-right input {
+  width: 90%;
+  padding: 14px 12px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border 0.3s;
+  background-color: #f1f5ff;
+  font-size: 16px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.auth-right input:focus {
+  border: 1px solid #0077b6;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.auth-right button {
+  background-color: #0077b6;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 95%;
+}
+
+.auth-right button:hover {
+  background-color: #023e8a;
+}
+
+.auth-right p {
+  margin-top: 15px;
+  color: #555;
+}
+
+.auth-right p button {
+  background: none;
+  border: none;
+  color: #0077b6;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-right p button:hover {
+  text-decoration: underline;
+}
+
+/* --- Top Bar --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* --- User Menu --- */
+.user-menu {
+  position: relative;
+}
+
+.user-icon {
+  cursor: pointer;
+  background-color: #0077b6;
+  color: white;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  user-select: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  z-index: 1000;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+.dropdown button:hover {
+  background-color: #f5f5f5;
+}
+
+/* --- Chatbot --- */
+.chat-container {
+  width: 400px;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f7f7f7;
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: scroll;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  max-width: 70%;
+}
+
+.user {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+  text-align: right;
+  margin-left: auto;
+}
+
+.bot {
+  background-color: #e5e5ea;
+  text-align: left;
+}
+
+.input-area {
+  display: flex;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+.input-area button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+/* --- Welcome Text --- */
+.welcome-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333;
+  padding: 40px;
+}
+
+.welcome-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 1rem;
+  color: #666;
+}
