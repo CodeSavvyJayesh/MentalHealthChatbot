@@ -1,4 +1,4 @@
-/* --- Global Styling --- */
+--- Global Styling ---
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -214,9 +214,15 @@ body {
   background-color: #f5f5f5;
 }
 
+
+/* yaaha kuch mat karna  chat bot wale me*/
+
+
+/* 
+
 /* --- Chatbot --- */
 .chat-container {
-  width: 400px;
+  width: 958px;
   margin: 30px auto;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -292,4 +298,471 @@ body {
 .welcome-text p {
   font-size: 1rem;
   color: #666;
+
+}
+
+
+
+/* end chat bot */
+
+ */
+
+
+
+ /* mindwell Chat Interface Styles - Light Mode */
+ .mindwell-chat-container {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   background-color: #f5f7fa;
+   /* Light background */
+   color: #212121;
+   /* Dark text for readability */
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+ }
+
+ .mindwell-chat-messages {
+   flex: 1;
+   overflow-y: auto;
+   padding: 0;
+   scroll-behavior: smooth;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar {
+   width: 8px;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar-track {
+   background: transparent;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar-thumb {
+   background: #c4c4c4;
+   border-radius: 4px;
+ }
+
+ .mindwell-message-row {
+   width: 100%;
+   border-bottom: 1px solid #e0e0e0;
+ }
+
+ .user-row {
+   background-color: #f5f7fa;
+ }
+
+ .assistant-row {
+   background-color: #ffffff;
+ }
+
+ .mindwell-message-content {
+   max-width: 768px;
+   margin: 0 auto;
+   display: flex;
+   gap: 16px;
+   padding: 24px 16px;
+   align-items: flex-start;
+ }
+
+ .mindwell-avatar {
+   flex-shrink: 0;
+   width: 32px;
+   height: 32px;
+ }
+
+ .user-avatar-circle {
+   width: 32px;
+   height: 32px;
+   border-radius: 4px;
+   background: #19c37d;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+ }
+
+ .bot-avatar-circle {
+   width: 32px;
+   height: 32px;
+   border-radius: 4px;
+   background: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   position: relative;
+ }
+
+ .mediverse-logo {
+   width: 24px;
+   height: 24px;
+   object-fit: contain;
+   border-radius: 2px;
+ }
+
+ .typing-avatar {
+   animation: pulse 1.5s ease-in-out infinite;
+ }
+
+ .typing-logo {
+   animation: logoSpin 2s linear infinite;
+ }
+
+ @keyframes pulse {
+
+   0%,
+   100% {
+     transform: scale(1);
+     box-shadow: 0 0 0 0 rgba(171, 104, 255, 0.7);
+   }
+
+   50% {
+     transform: scale(1.05);
+     box-shadow: 0 0 0 8px rgba(171, 104, 255, 0);
+   }
+ }
+
+ @keyframes logoSpin {
+   0% {
+     transform: rotate(0deg);
+   }
+
+   100% {
+     transform: rotate(360deg);
+   }
+ }
+
+ .mindwell-message-text {
+   flex: 1;
+   min-width: 0;
+ }
+
+ .mindwell-message-author {
+   font-weight: 600;
+   font-size: 14px;
+   margin-bottom: 8px;
+   color: #212121;
+ }
+
+ .mindwell-message-body {
+   font-size: 16px;
+   line-height: 1.6;
+   color: #212121;
+   word-wrap: break-word;
+ }
+
+ .mindwell-typing-indicator {
+   display: flex;
+   gap: 4px;
+   align-items: center;
+   padding: 8px 0;
+ }
+
+ .typing-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background-color: #8e8ea0;
+   animation: typingBounce 1.4s ease-in-out infinite both;
+ }
+
+ .typing-dot:nth-child(1) {
+   animation-delay: -0.32s;
+ }
+
+ .typing-dot:nth-child(2) {
+   animation-delay: -0.16s;
+ }
+
+ @keyframes typingBounce {
+
+   0%,
+   80%,
+   100% {
+     transform: scale(0.8);
+     opacity: 0.5;
+   }
+
+   40% {
+     transform: scale(1);
+     opacity: 1;
+   }
+ }
+
+ .mindwell-input-container {
+   padding: 12px 16px 24px;
+   background-color: #f5f7fa;
+ }
+
+ .mindwell-input-wrapper {
+   max-width: 958px;
+   margin: 0 auto;
+ }
+
+ .mindwell-input-inner {
+   position: relative;
+   display: flex;
+   align-items: flex-end;
+   background-color: #ffffff;
+   border: 1px solid #c4c4c4;
+   border-radius: 12px;
+   padding: 12px 16px;
+   gap: 8px;
+   transition: border-color 0.2s ease;
+ }
+
+ .mindwell-input-inner:focus-within {
+   border-color: #8e8ea0;
+   box-shadow: 0 0 0 2px rgba(142, 142, 160, 0.1);
+ }
+
+ .mindwell-attachment-btn {
+   background: none;
+   border: none;
+   color: #8e8ea0;
+   cursor: pointer;
+   padding: 4px;
+   border-radius: 6px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.2s ease;
+   flex-shrink: 0;
+ }
+
+ .mindwell-attachment-btn:hover {
+   background-color: #e0e0e0;
+   color: #212121;
+ }
+
+ .mindwell-textarea {
+   flex: 1;
+   background: transparent;
+   border: none;
+   outline: none;
+   color: #212121;
+   font-size: 16px;
+   line-height: 1.5;
+   resize: none;
+   max-height: 200px;
+   min-height: 24px;
+   font-family: inherit;
+   padding: 0;
+ }
+
+ .mindwell-textarea::placeholder {
+   color: #8e8ea0;
+ }
+
+ .mindwell-send-btn {
+   background: #c4c4c4;
+   border: none;
+   color: #212121;
+   cursor: pointer;
+   padding: 8px;
+   border-radius: 6px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.2s ease;
+   flex-shrink: 0;
+   width: 32px;
+   height: 32px;
+ }
+
+ .mindwell-send-btn:disabled {
+   cursor: not-allowed;
+   opacity: 0.5;
+ }
+
+ .mindwell-send-btn.active {
+   background: #19c37d;
+   color: white;
+ }
+
+ .mindwell-send-btn.active:hover {
+   background: #16a66b;
+ }
+
+ .mindwell-send-btn:not(.active):hover {
+   background-color: #b0b0b0;
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+   .mindwell-message-content {
+     padding: 16px 12px;
+     gap: 12px;
+   }
+
+   .mindwell-input-container {
+     padding: 12px;
+   }
+
+   .mindwell-avatar {
+     width: 28px;
+     height: 28px;
+   }
+
+   .user-avatar-circle,
+   .bot-avatar-circle {
+     width: 28px;
+     height: 28px;
+   }
+
+   .mediverse-logo {
+     width: 20px;
+     height: 20px;
+   }
+ }
+
+ /* Smooth transitions */
+ * {
+   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+ }
+
+
+
+/* yaha tak do delete or add any thing */
+
+
+
+
+
+
+.logo-img {
+  height: 40px;
+  
+  width: 40px;
+  
+  margin-left: -18px;
+
+}
+
+
+
+
+/* Added sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #f9fafb;
+  /* light dashboard gray */
+  color: #111827;
+  /* dark text */
+  transition: left 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-open {
+  left: 0;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-left: -15px;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar-menu {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* subtle divider */
+  padding: 16px 20px;
+}
+
+.sidebar-logout {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  color: #dc2626;
+  /* strong red */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sidebar-logout:hover {
+  background: rgba(220, 38, 38, 0.1);
+  /* light red hover */
+  border-radius: 6px;
+}
+
+/* Added clickable cursor for logo */
+.clickable {
+  cursor: pointer;
+}
+
+.logo-text {
+  cursor: pointer;
+}
+
+/* Responsive adjustments for sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px;
+    left: -280px;
+  }
 }

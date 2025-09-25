@@ -137,6 +137,24 @@ async def login(request: Request):
 
 # ---------------- OTP ROUTES -------------------
 
+# @app.post("/send-otp")
+# async def send_otp(request: Request):
+#     data = await request.json()
+#     email = data.get("email")
+
+#     if not email:
+#         return {"success": False, "message": "Email required"}
+
+#     otp = str(secrets.randbelow(1000000)).zfill(6)  # ✅ Secure 6-digit OTP
+#     otp_store[email] = {"otp": otp, "timestamp": time.time()}
+
+#     try:
+#         await send_otp_email(email, otp)
+#         return {"success": True, "message": "OTP sent successfully"}
+#     except Exception as e:
+#         print("Email error:", e)
+#         return {"success": False, "message": "Failed to send OTP"}
+
 @app.post("/send-otp")
 async def send_otp(request: Request):
     data = await request.json()
@@ -149,11 +167,24 @@ async def send_otp(request: Request):
     otp_store[email] = {"otp": otp, "timestamp": time.time()}
 
     try:
-        await send_otp_email(email, otp)
+        # ✅ Modified: send OTP + extra message
+        custom_message = f"""
+        Hello,
+
+        Your OTP is: {otp}
+
+        🔒 This code will expire in 5 minutes.
+        Please do not share this with anyone.
+
+        -- MindWell Security Team
+        """
+        await send_otp_email(email, custom_message)
+
         return {"success": True, "message": "OTP sent successfully"}
     except Exception as e:
         print("Email error:", e)
         return {"success": False, "message": "Failed to send OTP"}
+
 
 @app.post("/verify-otp")
 async def verify_otp(request: Request):
