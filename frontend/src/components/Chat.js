@@ -96,6 +96,9 @@ import { useState, useEffect, useRef } from "react"
 import { FiSend, FiPaperclip, FiUser } from "react-icons/fi"
 import mediverseLogo from '../mediverseLogo.png'; // import from src
 
+import { ThemeContext } from '../ThemeContext';
+import { useContext } from "react";
+
 function Chat({ chatId }) {
   const [messages, setMessages] = useState([
     { text: "Hi! I'm your  MindWell AI assistant. How can I support you today? 💙", sender: "bot" },
@@ -105,6 +108,8 @@ function Chat({ chatId }) {
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const chatBoxRef = useRef(null)
+  const { darkMode } = useContext(ThemeContext);
+  
 
   useEffect(() => {
     if (chatBoxRef.current) {
@@ -154,7 +159,7 @@ function Chat({ chatId }) {
   }
 
   return (
-    <div className="mindwell-chat-container">
+    <div className={`mindwell-chat-container ${darkMode ? "dark" : ""}`}>
       <div className="mindwell-chat-messages" ref={chatBoxRef}>
         {messages.map((msg, index) => (
           <div key={index} className={`mindwell-message-row ${msg.sender === "user" ? "user-row" : "assistant-row"}`}>
@@ -227,7 +232,7 @@ function Chat({ chatId }) {
               className={`mindwell-send-btn ${input.trim() ? "active" : ""}`}
               disabled={!input.trim()}
             >
-              <FiSend size={16}  color="#3955e2ff" />
+              <FiSend size={16}  />
             </button>
           </div>
         </div>

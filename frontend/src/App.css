@@ -226,7 +226,7 @@ body {
   margin: 30px auto;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
+  padding: 4px;
   background: #f7f7f7;
 }
 
@@ -777,4 +777,281 @@ body {
     width: 280px;
     left: -280px;
   }
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+      Dark Mode Fixes
+========================== */
+
+/* Main App */
+.main-container.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Top Bar */
+.main-container.dark .top-bar {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.main-container.dark .logo-text {
+  color: #e0e0e0;
+  /* Makes MindWell logo text visible */
+}
+
+
+
+/* Sidebar */
+.main-container.dark .sidebar {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.main-container.dark .sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.main-container.dark .sidebar-badge {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown menu */
+.main-container.dark .dropdown {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+.main-container.dark .dropdown button {
+  color: #e0e0e0;
+}
+
+.main-container.dark .dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Buttons */
+.main-container.dark button {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.main-container.dark button:hover {
+  background-color: #3a3a3a;
+}
+
+/* ==========================
+      Chatbot Dark Mode
+========================== */
+.mindwell-chat-container.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+  border: none;
+  /* remove white border */
+  padding: 12px;
+  /* optional */
+}
+
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1b1b1b;
+  color: #e0e0e0;
+  border-radius: 8px;
+  /* make edges smooth */
+}
+
+.mindwell-chat-container.dark .user-row {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .assistant-row {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .mindwell-message-author {
+  color: #a0a0a0;
+}
+
+.mindwell-chat-container.dark .mindwell-message-body {
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .user-avatar-circle {
+  background-color: #2c2c2c;
+  color: #8395eb;
+}
+
+.mindwell-chat-container.dark .bot-avatar-circle {
+  background-color: #222;
+}
+
+/* Input area */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1a1a1a;
+}
+
+.mindwell-chat-container.dark .mindwell-input-inner {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+}
+
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;
+  color: #fff;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a66ff;
+}
+
+.mindwell-chat-container.dark .mindwell-attachment-btn {
+  color: #c4c4c4;
+}
+
+.mindwell-chat-container.dark .mindwell-attachment-btn:hover {
+  background-color: #333;
+  color: #8395eb;
+}
+
+/* Typing indicator */
+.mindwell-chat-container.dark .mindwell-typing-indicator .typing-dot {
+  background-color: #8395eb;
+}
+
+/* Smooth transitions */
+body,
+.main-container,
+.mindwell-chat-container,
+.dropdown,
+button,
+.mindwell-input-inner,
+.mindwell-textarea {
+  transition: all 0.3s ease;
+}
+
+/* === Fix white outer border === */
+.mindwell-chat-container.dark {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border: none;            /* remove any white border */
+  box-shadow: none;        /* remove glow/outline */
+}
+
+/* Chat messages */
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1f1f1f;
+  color: #e0e0e0;          /* readable text */
+  border: none;
+}
+
+/* Message bubbles */
+.mindwell-chat-container.dark .mindwell-message-row {
+  color: #e0e0e0;
+  border: none;
+}
+
+/* Typing indicator */
+.mindwell-chat-container.dark .mindwell-typing-indicator .typing-dot {
+  background-color: #bbb;
+}
+
+/* === Fix Send Button === */
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;   /* visible blue button */
+  color: #ffffff;
+  border: none;
+  transition: background 0.3s;
+}
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a67ff;
+}
+
+/* Input container & textarea */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1e1e1e;
+  border: 1px solid #333;   /* subtle dark border */
+}
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: none;
+}
+
+/* Avatar circles */
+.mindwell-chat-container.dark .user-avatar-circle,
+.mindwell-chat-container.dark .bot-avatar-circle {
+  background-color: #333;
+}
+
+/* === Chat Dark Mode Fixes === */
+.mindwell-chat-container.dark {
+  background-color: #1a1a1a;
+  /* overall container */
+  color: #e0e0e0;
+  border: none;
+  /* remove any white outline */
+  box-shadow: none;
+}
+
+/* Chat messages area */
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1f1f1f;
+  border: none;
+}
+
+/* Remove hidden borders or outlines inside */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  /* subtle dark border instead of white */
+}
+
+/* Text inside messages */
+.mindwell-chat-container.dark .mindwell-message-author,
+.mindwell-chat-container.dark .mindwell-message-body {
+  color: #e0e0e0;
+  /* readable text */
+}
+
+/* === Send Button === */
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;
+  /* bright blue button */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a67ff;
+  /* lighter blue on hover */
+}
+
+/* Attachment button */
+.mindwell-chat-container.dark .mindwell-attachment-btn {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+/* Textarea styling */
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: none;
 }

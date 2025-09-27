@@ -10,11 +10,16 @@ import "./App.css"
 import doctorImage from "./doctor.png"
 import mediverseLogo from "./mediverseLogo.png"
 
+import { ThemeContext } from "./ThemeContext";
+
+import { useContext } from "react";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
   const [showChatbot, setShowChatbot] = useState(false)
   const [showSidebar, setShowSidebar] = useState(false)
+  const { darkMode } = useContext(ThemeContext);
 
   const handleLogout = () => {
     setIsLoggedIn(false)
@@ -63,8 +68,8 @@ function App() {
 
   // Logged in: show top bar, sidebar, chatbot, or welcome text
   return (
-    <div className="main-container">
-      {showSidebar && <div className="sidebar-overlay" onClick={() => setShowSidebar(false)}></div>}
+    <div className={`main-container ${darkMode ? "dark" : ""}`} >
+      {showSidebar  && <div className="sidebar-overlay" onClick={() => setShowSidebar(false)}></div>}
 
       <div className={`sidebar ${showSidebar ? "sidebar-open" : ""}`}>
         <div className="sidebar-header">
@@ -99,7 +104,7 @@ function App() {
             <span>Mindfulness exercises</span>
           </div>
           <div className="sidebar-item">
-            <span className="sidebar-icon"><FiBarChart2  color="#8395eb"/></span>
+            <span className="sidebar-icon"><FiBarChart2  color="#8395eb" /></span>
             <span>Progress tracking</span>
           </div>
           <div className="sidebar-item">
