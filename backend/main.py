@@ -18,7 +18,7 @@ otp_store = {}
 # Allow frontend connection
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # TODO: replace with actual frontend domain in prod
+    allow_origins=["*"],  # TODO: replace with actual frontend domain in prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,22 +27,16 @@ app.add_middleware(
 # ---------------- CONSTANTS -------------------
 
 SYSTEM_PROMPT = (
-    "IMPORTANT: Always reply in ONLY 1–3 short sentences. "
-    "Do not exceed 50 words under any circumstances.\n\n"
-    "You are a compassionate, empathetic Mental Health Chatbot. "
-    "Your role is to provide short, supportive responses about emotional well-being, "
-    "stress relief, motivation, positivity, and self-care.\n\n"
+    "IMPORTANT: Reply in 2–5 supportive sentences. "
+    "Keep language warm, compassionate, and friendly. "
+    "Prioritize empathy, positivity, and emotional support.\n\n"
     "🚫 HARD RESTRICTIONS:\n"
-    "- NEVER answer or attempt puzzles, riddles, math, coding, technical, political, or news questions.\n"
+    "- NEVER answer puzzles, riddles, math, coding, technical, political, or news questions.\n"
     "- If asked off-topic, reply: "
-    "'I’m here to support your well-being and self-care, not to solve puzzles or technical problems. "
+    "'I’m here to support your well-being, not technical problems. "
     "Would you like a calming tip, a short breathing exercise, or a quick check-in instead?'\n"
-    "\n💡 RESPONSE STYLE:\n"
-    "- Empathy first, then encouragement.\n"
-    "- Always end with positivity.\n"
-    "- Keep language warm, simple, and friendly.\n"
     "\n⚠️ SAFETY:\n"
-    "- If user mentions self-harm, encourage reaching out to a trusted person or professional.\n"
+    "- If the user mentions self-harm or suicidal thoughts, encourage reaching out to a trusted person or professional immediately.\n"
 )
 
 OFF_TOPIC_KEYWORDS = [
@@ -51,16 +45,13 @@ OFF_TOPIC_KEYWORDS = [
     "scenario", "example", "equation", "arithmetic", "trignometry"
 ]
 
-MODEL_NAME = "phi"  # ✅ Make sure this model exists in your Ollama setup
+MODEL_NAME = "phi"  # Make sure this model exists in your Ollama setup
 OLLAMA_URL = "http://127.0.0.1:11434/v1/chat/completions"
 
 # ---------------- HELPER FUNCTIONS -------------------
 
-def shorten_reply(reply: str, max_words: int = 200) -> str:
-    """Trim the reply if it gets too long."""
-    words = reply.split()
-    if len(words) > max_words:
-        reply = " ".join(words[:max_words]) + "..."
+def shorten_reply(reply: str) -> str:
+    """Return the reply as-is to avoid incomplete responses."""
     return reply
 
 # ---------------- CHATBOT ROUTE -------------------
@@ -68,17 +59,33 @@ def shorten_reply(reply: str, max_words: int = 200) -> str:
 @app.post("/chat")
 async def chat_endpoint(request: Request):
     data = await request.json()
-    user_message = data.get("text", "")
+    user_message = data.get("text", "").strip()
 
-    # ✅ Block off-topic queries before hitting Ollama
-    if any(word in user_message.lower() for word in OFF_TOPIC_KEYWORDS):
+    if not user_message:
+        return {"reply": "I’m here whenever you want to talk 💙"}
+
+    # ✅ Crisis handling
+    crisis_keywords = ["suicid", "kill myself", "end my life", "self-harm"]
+    if any(word in user_message.lower() for word in crisis_keywords):
         return {
             "reply": (
-                "I’m here to support your well-being and self-care, not to solve puzzles or technical problems. "
-                "Would you like a calming tip, a short breathing exercise, or a quick check-in instead?"
+                "I’m really concerned about your safety 💙. "
+                "If you’re in immediate danger, please call your local emergency number. "
+                "In India: AASRA +91-9820466726, Snehi Helpline +91-9582208181. "
+                "You are not alone, and reaching out is a strong step."
             )
         }
 
+    # ✅ Off-topic block
+    if any(word in user_message.lower() for word in OFF_TOPIC_KEYWORDS):
+        return {
+            "reply": (
+                "I’m here to support your well-being, not puzzles or technical problems. "
+                "Would you like a calming tip, a short breathing exercise, or a quick check-in?"
+            )
+        }
+
+    # ✅ Prepare payload for Ollama phi model
     payload = {
         "model": MODEL_NAME,
         "messages": [
@@ -88,19 +95,22 @@ async def chat_endpoint(request: Request):
     }
 
     try:
-        response = requests.post(OLLAMA_URL, json=payload)
+        response = requests.post(OLLAMA_URL, json=payload, timeout=60)
         response.raise_for_status()
         result = response.json()
         bot_reply = result["choices"][0]["message"]["content"]
 
-        # ✅ Force shortness
-        bot_reply = shorten_reply(bot_reply, max_words=200)
-
-        return {"reply": bot_reply}
+        # Return full reply
+        return {"reply": shorten_reply(bot_reply)}
 
     except Exception as e:
         print("Error talking to Ollama:", e)
-        return {"reply": "I’m having trouble connecting right now. Please try again later."}
+        return {
+            "reply": (
+                "I’m having trouble connecting right now 💙. "
+                "Take a deep breath and reach out to someone you trust if needed."
+            )
+        }
 
 # ---------------- USER AUTH ROUTES -------------------
 
@@ -137,24 +147,6 @@ async def login(request: Request):
 
 # ---------------- OTP ROUTES -------------------
 
-# @app.post("/send-otp")
-# async def send_otp(request: Request):
-#     data = await request.json()
-#     email = data.get("email")
-
-#     if not email:
-#         return {"success": False, "message": "Email required"}
-
-#     otp = str(secrets.randbelow(1000000)).zfill(6)  # ✅ Secure 6-digit OTP
-#     otp_store[email] = {"otp": otp, "timestamp": time.time()}
-
-#     try:
-#         await send_otp_email(email, otp)
-#         return {"success": True, "message": "OTP sent successfully"}
-#     except Exception as e:
-#         print("Email error:", e)
-#         return {"success": False, "message": "Failed to send OTP"}
-
 @app.post("/send-otp")
 async def send_otp(request: Request):
     data = await request.json()
@@ -163,28 +155,15 @@ async def send_otp(request: Request):
     if not email:
         return {"success": False, "message": "Email required"}
 
-    otp = str(secrets.randbelow(1000000)).zfill(6)  # ✅ Secure 6-digit OTP
+    otp = str(secrets.randbelow(1000000)).zfill(6)  # Secure 6-digit OTP
     otp_store[email] = {"otp": otp, "timestamp": time.time()}
 
     try:
-        # ✅ Modified: send OTP + extra message
-        custom_message = f"""
-        Hello,
-
-        Your OTP is: {otp}
-
-        🔒 This code will expire in 5 minutes.
-        Please do not share this with anyone.
-
-        -- MindWell Security Team
-        """
-        await send_otp_email(email, custom_message)
-
+        await send_otp_email(email, otp)
         return {"success": True, "message": "OTP sent successfully"}
     except Exception as e:
         print("Email error:", e)
         return {"success": False, "message": "Failed to send OTP"}
-
 
 @app.post("/verify-otp")
 async def verify_otp(request: Request):
@@ -200,12 +179,10 @@ async def verify_otp(request: Request):
     if not record or record["otp"] != otp:
         return {"success": False, "message": "Invalid or expired OTP"}
 
-    # ✅ OTP expiry check (5 minutes)
-    if time.time() - record["timestamp"] > 300:
+    if time.time() - record["timestamp"] > 300:  # OTP expiry 5 min
         del otp_store[email]
         return {"success": False, "message": "OTP expired"}
 
-    # ✅ Remove OTP after verification
     del otp_store[email]
 
     if users_collection.find_one({"username": email}):
