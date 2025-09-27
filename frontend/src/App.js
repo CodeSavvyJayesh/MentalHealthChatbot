@@ -68,35 +68,42 @@ function App() {
 
       <div className={`sidebar ${showSidebar ? "sidebar-open" : ""}`}>
         <div className="sidebar-header">
-          <img src={mediverseLogo || "/placeholder.svg"} alt="MindWell Logo" className="sidebar-logo" onClick={toggleSidebar} />
+
+         <img
+            src={mediverseLogo || "/placeholder.svg"}
+            alt="MediVerse Logo"
+            className="logo-img clickable"
+            onClick={toggleSidebar}
+          />
+
           <span className="sidebar-title">MindWell</span>
         </div>
 
         <div className="sidebar-menu">
           <div className="sidebar-item">
             
-            <span className="sidebar-icon"><FiEdit /></span>
+            <span className="sidebar-icon"><FiEdit  color="#8395eb" /></span>
             <span>New therapy session</span>
           </div>
           <div className="sidebar-item">
           
-            <span className="sidebar-icon"><FiSearch /></span>
+            <span className="sidebar-icon"><FiSearch  color="#8395eb" /></span>
             <span>Search conversations</span>
           </div>
           <div className="sidebar-item">
-             <span className="sidebar-icon"><FiBook /></span>
+             <span className="sidebar-icon"><FiBook  color="#8395eb"/></span>
             <span>Mental health library</span>
           </div>
           <div className="sidebar-item">
-          <span className="sidebar-icon"><FiActivity /></span>
+          <span className="sidebar-icon"><FiActivity  color="#8395eb" /></span>
             <span>Mindfulness exercises</span>
           </div>
           <div className="sidebar-item">
-            <span className="sidebar-icon"><FiBarChart2 /></span>
+            <span className="sidebar-icon"><FiBarChart2  color="#8395eb"/></span>
             <span>Progress tracking</span>
           </div>
           <div className="sidebar-item">
-          <span className="sidebar-icon"><FiFolder /></span>
+          <span className="sidebar-icon"><FiFolder  color="#8395eb"/></span>
             <span>My sessions</span>
             <span className="sidebar-badge">NEW</span>
           </div>

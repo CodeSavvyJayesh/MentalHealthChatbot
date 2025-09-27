@@ -112,3 +112,8 @@ git clean -fd
 Resets your branch to exactly match the remote
 
 Deletes untracked files and directories
+
+
+
+
+npm install react-icons

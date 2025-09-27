@@ -79,25 +79,25 @@ function UserMenu({ showChatbot, setShowChatbot, onLogout }) {
     <div className="user-menu" ref={menuRef}>
       {/* Top-right icon button */}
       <button onClick={handleToggleMenu} className="user-button">
-        <FiUser size={22} />
+        <FiUser size={22}  color="#8395eb" />
       </button>
 
       {menuOpen && (
-        <div className="dropdown">
+        <div className="dropdown" >
           <button onClick={() => setShowChatbot(!showChatbot)}>
-            <FiMessageSquare /> {showChatbot ? "Disable Chatbot" : "Enable Chatbot"}
+            <FiMessageSquare  color="#8395eb"/> {showChatbot ? "Disable Chatbot" : "Enable Chatbot"}
           </button>
           <button>
-            <FiTrash2 /> Delete Account
+            <FiTrash2  color="#8395eb" /> Delete Account
           </button>
           <button>
-            <FiFlag /> Report Issue
+            <FiFlag  color="#8395eb"/> Report Issue
           </button>
           <button>
-            <FiSend /> Feedback
+            <FiSend  color="#8395eb"/> Feedback
           </button>
           <button onClick={onLogout}>
-            <FiLogOut /> Logout
+            <FiLogOut  color="#8395eb" /> Logout
           </button>
         </div>
       )}

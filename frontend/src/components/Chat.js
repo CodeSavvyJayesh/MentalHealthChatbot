@@ -162,7 +162,7 @@ function Chat({ chatId }) {
               <div className="mindwell-avatar">
                 {msg.sender === "user" ? (
                   <div className="user-avatar-circle">
-                    <FiUser size={16} />
+                    <FiUser size={16} color="#8395eb"/>
                   </div>
                 ) : (
                   <div className="bot-avatar-circle">
@@ -227,7 +227,7 @@ function Chat({ chatId }) {
               className={`mindwell-send-btn ${input.trim() ? "active" : ""}`}
               disabled={!input.trim()}
             >
-              <FiSend size={16} />
+              <FiSend size={16}  color="#3955e2ff" />
             </button>
           </div>
         </div>
