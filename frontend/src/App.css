@@ -1,4 +1,4 @@
-/* --- Global Styling --- */
+--- Global Styling ---
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -34,11 +34,17 @@ body {
   align-items: center;
 }
 
+
+
 .auth-left::before {
+  --curve-offset: 318px;
+  /* change this number to move the curve */
+
   content: "";
   position: absolute;
-  right: -50px;
   top: 0;
+  left: var(--curve-offset);
+ 
   width: 100px;
   height: 100%;
   background: white;
@@ -47,10 +53,14 @@ body {
 }
 
 .auth-left img {
-  width: 250px;
+  width: 230px;
+  
   object-fit: contain;
   z-index: 1;
+  margin-left: 20px;
+  
 }
+
 
 /* Right Panel */
 .auth-right {
@@ -81,11 +91,20 @@ body {
   box-sizing: border-box;
 }
 
+
+
 .auth-right input:focus {
   border: 1px solid #0077b6;
   outline: none;
   background-color: #ffffff;
 }
+
+
+
+
+
+
+
 
 .auth-right button {
   background-color: #0077b6;
@@ -96,7 +115,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
-  width: 95%;
+  width: 90%;
 }
 
 .auth-right button:hover {
@@ -139,7 +158,7 @@ body {
 .logo-img {
   height: 40px;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 0px;
   background-color: transparent;
 }
 
@@ -195,13 +214,19 @@ body {
   background-color: #f5f5f5;
 }
 
+
+/* yaaha kuch mat karna  chat bot wale me*/
+
+
+/* 
+
 /* --- Chatbot --- */
 .chat-container {
-  width: 400px;
+  width: 958px;
   margin: 30px auto;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
+  padding: 4px;
   background: #f7f7f7;
 }
 
@@ -273,4 +298,760 @@ body {
 .welcome-text p {
   font-size: 1rem;
   color: #666;
+
+}
+
+
+
+/* end chat bot */
+
+ */
+
+
+
+ /* mindwell Chat Interface Styles - Light Mode */
+ .mindwell-chat-container {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   background-color: #f5f7fa;
+   /* Light background */
+   color: #212121;
+   /* Dark text for readability */
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+ }
+
+ .mindwell-chat-messages {
+   flex: 1;
+   overflow-y: auto;
+   padding: 0;
+   scroll-behavior: smooth;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar {
+   width: 8px;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar-track {
+   background: transparent;
+ }
+
+ .mindwell-chat-messages::-webkit-scrollbar-thumb {
+   background: #c4c4c4;
+   border-radius: 4px;
+ }
+
+ .mindwell-message-row {
+   width: 100%;
+   border-bottom: 1px solid #e0e0e0;
+ }
+
+ .user-row {
+   background-color: #f5f7fa;
+ }
+
+ .assistant-row {
+   background-color: #ffffff;
+ }
+
+ /* .mindwell-message-content {
+   max-width: 768px;
+   margin: 0 auto;
+   display: flex;
+   gap: 16px;
+   padding: 24px 16px;
+   align-items: flex-start;
+   left: -18px;
+ } */
+.mindwell-message-content {
+  max-width: 768px;
+  margin-left: 17px;
+  /* adjust this value */
+  margin-right: auto;
+  /* keeps it aligned to left */
+  display: flex;
+  gap: 16px;
+  padding: 24px 16px;
+  align-items: flex-start;
+}
+
+ .mindwell-avatar {
+   flex-shrink: 0;
+   width: 32px;
+   height: 32px;
+ }
+
+ .user-avatar-circle {
+   width: 32px;
+   height: 32px;
+   border-radius: 4px;
+   background: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+ }
+
+ .bot-avatar-circle {
+   width: 32px;
+   height: 32px;
+   border-radius: 4px;
+   background: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   position: relative;
+ }
+
+ .mediverse-logo {
+   width: 24px;
+   height: 24px;
+   object-fit: contain;
+   border-radius: 2px;
+ }
+
+ .typing-avatar {
+   animation: pulse 1.5s ease-in-out infinite;
+ }
+
+ .typing-logo {
+   animation: logoSpin 2s linear infinite;
+ }
+
+ @keyframes pulse {
+
+   0%,
+   100% {
+     transform: scale(1);
+     box-shadow: 0 0 0 0 rgba(171, 104, 255, 0.7);
+   }
+
+   50% {
+     transform: scale(1.05);
+     box-shadow: 0 0 0 8px rgba(171, 104, 255, 0);
+   }
+ }
+
+ @keyframes logoSpin {
+   0% {
+     transform: rotate(0deg);
+   }
+
+   100% {
+     transform: rotate(360deg);
+   }
+ }
+
+ .mindwell-message-text {
+   flex: 1;
+   min-width: 0;
+ }
+
+ .mindwell-message-author {
+   font-weight: 600;
+   font-size: 14px;
+   margin-bottom: 8px;
+   color: #212121;
+ }
+
+ .mindwell-message-body {
+   font-size: 16px;
+   line-height: 1.6;
+   color: #212121;
+   word-wrap: break-word;
+ }
+
+ .mindwell-typing-indicator {
+   display: flex;
+   gap: 4px;
+   align-items: center;
+   padding: 8px 0;
+ }
+
+ .typing-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background-color: #8e8ea0;
+   animation: typingBounce 1.4s ease-in-out infinite both;
+ }
+
+ .typing-dot:nth-child(1) {
+   animation-delay: -0.32s;
+ }
+
+ .typing-dot:nth-child(2) {
+   animation-delay: -0.16s;
+ }
+
+ @keyframes typingBounce {
+
+   0%,
+   80%,
+   100% {
+     transform: scale(0.8);
+     opacity: 0.5;
+   }
+
+   40% {
+     transform: scale(1);
+     opacity: 1;
+   }
+ }
+
+ .mindwell-input-container {
+   padding: 12px 16px 24px;
+   background-color: #f5f7fa;
+ }
+
+ .mindwell-input-wrapper {
+   max-width: 958px;
+   margin: 0 auto;
+ }
+
+ .mindwell-input-inner {
+   position: relative;
+   display: flex;
+   align-items: flex-end;
+   background-color: #ffffff;
+   border: 1px solid #c4c4c4;
+   border-radius: 12px;
+   padding: 12px 16px;
+   gap: 8px;
+   transition: border-color 0.2s ease;
+ }
+
+ .mindwell-input-inner:focus-within {
+   border-color: #8e8ea0;
+   box-shadow: 0 0 0 2px rgba(142, 142, 160, 0.1);
+ }
+
+ .mindwell-attachment-btn {
+   background: none;
+   border: none;
+   color: #8e8ea0;
+   cursor: pointer;
+   padding: 4px;
+   border-radius: 6px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.2s ease;
+   flex-shrink: 0;
+ }
+
+ .mindwell-attachment-btn:hover {
+   background-color: #e0e0e0;
+   color: #212121;
+ }
+
+ .mindwell-textarea {
+   flex: 1;
+   background: transparent;
+   border: none;
+   outline: none;
+   color: #212121;
+   font-size: 16px;
+   line-height: 1.5;
+   resize: none;
+   max-height: 200px;
+   min-height: 24px;
+   font-family: inherit;
+   padding: 0;
+ }
+
+ .mindwell-textarea::placeholder {
+   color: #8e8ea0;
+ }
+
+ .mindwell-send-btn {
+   background: #c4c4c4;
+   border: none;
+   color: #212121;
+   cursor: pointer;
+   padding: 8px;
+   border-radius: 6px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.2s ease;
+   flex-shrink: 0;
+   width: 32px;
+   height: 32px;
+ }
+
+ .mindwell-send-btn:disabled {
+   cursor: not-allowed;
+   opacity: 0.5;
+ }
+
+ .mindwell-send-btn.active {
+   background: #c8ceff;
+   color: white;
+ }
+
+ .mindwell-send-btn.active:hover {
+   background: #c8ceff;
+ }
+
+ .mindwell-send-btn:not(.active):hover {
+   background-color: #b0b0b0;
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+   .mindwell-message-content {
+     padding: 16px 12px;
+     gap: 12px;
+   }
+
+   .mindwell-input-container {
+     padding: 12px;
+   }
+
+   .mindwell-avatar {
+     width: 28px;
+     height: 28px;
+   }
+
+   .user-avatar-circle,
+   .bot-avatar-circle {
+     width: 28px;
+     height: 28px;
+   }
+
+   .mediverse-logo {
+     width: 20px;
+     height: 20px;
+   }
+ }
+
+ /* Smooth transitions */
+ * {
+   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+ }
+
+
+
+/* yaha tak dont delete or add any thing */
+
+
+
+
+
+
+.logo-img {
+  height: 40px;
+  
+  width: 40px;
+  
+  margin-left: -18px;
+
+}
+
+
+
+
+/* Added sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #f9fafb;
+  /* light dashboard gray */
+  color: #111827;
+  /* dark text */
+  transition: left 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-open {
+  left: 0;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* .sidebar-logo {
+  width: 40px;
+  height: 40px;
+  /* border-radius: 10px; */
+  /* margin-left: -15px; */
+/* } */
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar-menu {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* subtle divider */
+  padding: 16px 20px;
+}
+
+.sidebar-logout {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  color: #dc2626;
+  /* strong red */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sidebar-logout:hover {
+  background: rgba(220, 38, 38, 0.1);
+  /* light red hover */
+  border-radius: 6px;
+}
+
+/* Added clickable cursor for logo */
+.clickable {
+  cursor: pointer;
+}
+
+.logo-text {
+  cursor: pointer;
+}
+
+/* Responsive adjustments for sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px;
+    left: -280px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+      Dark Mode Fixes
+========================== */
+
+/* Main App */
+.main-container.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Top Bar */
+.main-container.dark .top-bar {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.main-container.dark .logo-text {
+  color: #e0e0e0;
+  /* Makes MindWell logo text visible */
+}
+
+
+
+/* Sidebar */
+.main-container.dark .sidebar {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.main-container.dark .sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.main-container.dark .sidebar-badge {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown menu */
+.main-container.dark .dropdown {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+.main-container.dark .dropdown button {
+  color: #e0e0e0;
+}
+
+.main-container.dark .dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Buttons */
+.main-container.dark button {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.main-container.dark button:hover {
+  background-color: #3a3a3a;
+}
+
+/* ==========================
+      Chatbot Dark Mode
+========================== */
+.mindwell-chat-container.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+  border: none;
+  /* remove white border */
+  padding: 12px;
+  /* optional */
+}
+
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1b1b1b;
+  color: #e0e0e0;
+  border-radius: 8px;
+  /* make edges smooth */
+}
+
+.mindwell-chat-container.dark .user-row {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .assistant-row {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .mindwell-message-author {
+  color: #a0a0a0;
+}
+
+.mindwell-chat-container.dark .mindwell-message-body {
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .user-avatar-circle {
+  background-color: #2c2c2c;
+  color: #8395eb;
+}
+
+.mindwell-chat-container.dark .bot-avatar-circle {
+  background-color: #222;
+}
+
+/* Input area */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1a1a1a;
+}
+
+.mindwell-chat-container.dark .mindwell-input-inner {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+}
+
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;
+  color: #fff;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a66ff;
+}
+
+.mindwell-chat-container.dark .mindwell-attachment-btn {
+  color: #c4c4c4;
+}
+
+.mindwell-chat-container.dark .mindwell-attachment-btn:hover {
+  background-color: #333;
+  color: #8395eb;
+}
+
+/* Typing indicator */
+.mindwell-chat-container.dark .mindwell-typing-indicator .typing-dot {
+  background-color: #8395eb;
+}
+
+/* Smooth transitions */
+body,
+.main-container,
+.mindwell-chat-container,
+.dropdown,
+button,
+.mindwell-input-inner,
+.mindwell-textarea {
+  transition: all 0.3s ease;
+}
+
+/* === Fix white outer border === */
+.mindwell-chat-container.dark {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border: none;            /* remove any white border */
+  box-shadow: none;        /* remove glow/outline */
+}
+
+/* Chat messages */
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1f1f1f;
+  color: #e0e0e0;          /* readable text */
+  border: none;
+}
+
+/* Message bubbles */
+.mindwell-chat-container.dark .mindwell-message-row {
+  color: #e0e0e0;
+  border: none;
+}
+
+/* Typing indicator */
+.mindwell-chat-container.dark .mindwell-typing-indicator .typing-dot {
+  background-color: #bbb;
+}
+
+/* === Fix Send Button === */
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;   /* visible blue button */
+  color: #ffffff;
+  border: none;
+  transition: background 0.3s;
+}
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a67ff;
+}
+
+/* Input container & textarea */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1e1e1e;
+  border: 1px solid #333;   /* subtle dark border */
+}
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: none;
+}
+
+/* Avatar circles */
+.mindwell-chat-container.dark .user-avatar-circle,
+.mindwell-chat-container.dark .bot-avatar-circle {
+  background-color: #333;
+}
+
+/* === Chat Dark Mode Fixes === */
+.mindwell-chat-container.dark {
+  background-color: #1a1a1a;
+  /* overall container */
+  color: #e0e0e0;
+  border: none;
+  /* remove any white outline */
+  box-shadow: none;
+}
+
+/* Chat messages area */
+.mindwell-chat-container.dark .mindwell-chat-messages {
+  background-color: #1f1f1f;
+  border: none;
+}
+
+/* Remove hidden borders or outlines inside */
+.mindwell-chat-container.dark .mindwell-input-container {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  /* subtle dark border instead of white */
+}
+
+/* Text inside messages */
+.mindwell-chat-container.dark .mindwell-message-author,
+.mindwell-chat-container.dark .mindwell-message-body {
+  color: #e0e0e0;
+  /* readable text */
+}
+
+/* === Send Button === */
+.mindwell-chat-container.dark .mindwell-send-btn {
+  background-color: #3955e2;
+  /* bright blue button */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.mindwell-chat-container.dark .mindwell-send-btn:hover {
+  background-color: #4a67ff;
+  /* lighter blue on hover */
+}
+
+/* Attachment button */
+.mindwell-chat-container.dark .mindwell-attachment-btn {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+/* Textarea styling */
+.mindwell-chat-container.dark .mindwell-textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: none;
 }
