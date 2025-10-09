@@ -10,6 +10,8 @@ import time
 
 app = FastAPI()
 
+
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Temporary store for OTPs {email: {"otp": "123456", "timestamp": 123456}}
@@ -48,6 +50,29 @@ OFF_TOPIC_KEYWORDS = [
 MODEL_NAME = "phi"  # Make sure this model exists in your Ollama setup
 OLLAMA_URL = "http://127.0.0.1:11434/v1/chat/completions"
 
+
+import threading
+
+def warm_up_model():
+    try:
+        print("🔥 Warming up Ollama model...")
+        payload = {
+            "model": MODEL_NAME,
+            "messages": [
+                {"role": "system", "content": "You are a helpful mental health support assistant."},
+                {"role": "user", "content": "Hello!"}
+            ]
+        }
+        # Send a small dummy request just to load the model into memory
+        requests.post(OLLAMA_URL, json=payload, timeout=20)
+        print("✅ Model warm-up complete! Ready to chat.")
+    except Exception as e:
+        print("⚠️ Warm-up failed:", e)
+
+# Run warm-up in a background thread so server starts instantly
+threading.Thread(target=warm_up_model, daemon=True).start()
+
+
 # ---------------- HELPER FUNCTIONS -------------------
 
 def shorten_reply(reply: str) -> str:
@@ -65,7 +90,35 @@ async def chat_endpoint(request: Request):
         return {"reply": "I’m here whenever you want to talk 💙"}
 
     # ✅ Crisis handling
-    crisis_keywords = ["suicid", "kill myself", "end my life", "self-harm"]
+    crisis_keywords = ["suicid",
+"kill myself",
+"end my life",
+"self-harm",
+"hurt myself",
+"want to die",
+"can't live anymore",
+"no reason to live",
+"give up on life",
+"tired of living",
+"cut myself",
+"life is worthless",
+"die",
+"commit suicide",
+"take my life",
+"ending it all",
+"overdose",
+"jump off",
+"hang myself",
+"slit my wrist",
+"want to disappear",
+"nobody cares if I die",
+"wish I was dead",
+"don’t want to be here",
+"life has no meaning",
+"pain is too much",
+"can’t go on",
+"feel hopeless",
+"want everything to stop"]
     if any(word in user_message.lower() for word in crisis_keywords):
         return {
             "reply": (
@@ -80,8 +133,8 @@ async def chat_endpoint(request: Request):
     if any(word in user_message.lower() for word in OFF_TOPIC_KEYWORDS):
         return {
             "reply": (
-                "I’m here to support your well-being, not puzzles or technical problems. "
-                "Would you like a calming tip, a short breathing exercise, or a quick check-in?"
+                 "I’m here to support your well-being 🌱 — not tackle technical stuff ⚙️ "
+                 "Would you prefer a 🧘‍♀️ breathing exercise, 🌻 mindfulness tip, or 💬 quick emotional check?"
             )
         }
 
@@ -95,13 +148,15 @@ async def chat_endpoint(request: Request):
     }
 
     try:
-        response = requests.post(OLLAMA_URL, json=payload, timeout=60)
+        response = requests.post(OLLAMA_URL, json=payload, timeout=30)
         response.raise_for_status()
         result = response.json()
         bot_reply = result["choices"][0]["message"]["content"]
 
         # Return full reply
         return {"reply": shorten_reply(bot_reply)}
+    
+    
 
     except Exception as e:
         print("Error talking to Ollama:", e)
